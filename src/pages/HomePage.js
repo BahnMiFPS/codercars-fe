@@ -9,6 +9,7 @@ import FormModal from "../components/FormModal";
 import AddIcon from "@mui/icons-material/Add";
 
 const HomePage = () => {
+  //vu
   const [cars, setCars] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
   const [page, setPage] = useState(1);
@@ -85,14 +86,11 @@ const HomePage = () => {
     release_date: car.release_date,
   }));
 
-  const getData =
-    useCallback(
-      async () => {
+  const getData = useCallback(async () => {
     const res = await apiService.get(`/cars?page=${page}`);
     setCars(res.data.cars);
     setTotalPages(res.data.total);
-      }
-      , [page]);
+  }, [page]);
 
   useEffect(() => {
     getData();
